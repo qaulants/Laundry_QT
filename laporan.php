@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 // munculkan atau pilih  sebuah atau semua kolom dari table user
 $tanggal_dari = isset($_GET['tanggal_dari']) ? $_GET['tanggal_dari'] : '';
-$tanggal_sampai = isset($_GET['tanggal_dari']) ? $_GET['tanggal_sampai'] : '';
+$tanggal_sampai = isset($_GET['tanggal_sampai']) ? $_GET['tanggal_sampai'] : '';
 $status = isset($_GET['status']) ? $_GET['status'] : '';
 
 $query = "SELECT customer.customer_name, trans_order.* FROM trans_order LEFT JOIN customer ON customer.id=trans_order.id_customer WHERE 1";
