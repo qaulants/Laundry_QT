@@ -2,7 +2,30 @@
 session_start();
 include 'koneksi.php';
 // munculkan atau pilih  sebuah atau semua kolom dari table user
-$queryTrans = mysqli_query($koneksi,  "SELECT customer.customer_name, trans_order.* FROM trans_order LEFT JOIN customer ON customer.id=trans_order.id_customer ORDER BY id DESC");
+$tanggal_dari = isset($_GET['tanggal_dari']) ? $_GET['tanggal_dari'] : '';
+$tanggal_sampai = isset($_GET['tanggal_dari']) ? $_GET['tanggal_sampai'] : '';
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+
+$query = "SELECT customer.customer_name, trans_order.* FROM trans_order LEFT JOIN customer ON customer.id=trans_order.id_customer WHERE 1";
+
+if ($tanggal_dari != '') {
+    $query .= " AND order_date >= '$tanggal_dari'";
+}
+
+if ($tanggal_sampai != '') {
+    $query .= " AND order_date <= '$tanggal_sampai'";
+}
+
+// jika status tidak kosong
+if ($status != '') {
+    $query .= " AND order_status = '$status'";
+}
+
+
+$query .= " ORDER BY trans_order.id DESC";
+
+$queryTrans = mysqli_query($koneksi, $query);
+
 // pake mysqli_fetch_assoc($query) = untuk menjadikan hasil query menjadi sebuah data (object, array)
 // $dataUser = mysqli_fetch_assoc($queryUser);
 // jika parameternya ada ?delete=nilai parameter
@@ -69,9 +92,30 @@ if (isset($_GET['delete'])) {
                                                 Data berhasil dihapus
                                             </div>
                                         <?php endif ?>
-                                        <div align="right" class="mb-3">
-                                            <a href="tambah-trans.php" class="btn btn-primary">Tambah</a>
-                                        </div>
+                                       <!-- filter data transaksi -->
+                                        <form action="" method="get">
+                                            <div class="mb-3 row">
+                                                <div class="col-sm-3">
+                                                    <label for="">Tanggal dari</label>
+                                                    <input type="date" name="tanggal_dari" class="form-control">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="">Tanggal sampai</label>
+                                                    <input type="date" name="tanggal_sampai" class="form-control">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="">Status</label>
+                                                    <select name="status" id="" class="form-control">
+                                                        <option value="">--Pilih Status--</option>
+                                                        <option value="0">Baru</option>
+                                                        <option value="1">Sudah Dikembalikan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-3 mt-4">
+                                                    <button name="filter" class="btn btn-primary">Tampilkan Laporan</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -94,15 +138,15 @@ if (isset($_GET['delete'])) {
                                                         <td><?php echo $rowTrans['order_date'] ?></td>
                                                         <td>
                                                             <?php
-                                                                switch($rowTrans['order_status']) {
-                                                                    case '1':
-                                                                        $badge = "<span class='badge bg-success'>Sudah dikembalikan</span>";
-                                                                        break;
-                                                                    default:
-                                                                        $badge = "<span class='badge bg-warning'>Baru</span>";
-                                                                        break;
-                                                                } 
-                                                                echo $badge;
+                                                            switch ($rowTrans['order_status']) {
+                                                                case '1':
+                                                                    $badge = "<span class='badge bg-success'>Sudah dikembalikan</span>";
+                                                                    break;
+                                                                default:
+                                                                    $badge = "<span class='badge bg-warning'>Baru</span>";
+                                                                    break;
+                                                            }
+                                                            echo $badge;
                                                             ?>
                                                         </td>
                                                         <td>
@@ -112,9 +156,7 @@ if (isset($_GET['delete'])) {
                                                             <a target="_blank" href="print.php?id=<?php echo $rowTrans['id'] ?>" class="btn btn-success btn-sm">
                                                                 <span class="tf-icon bx bx-printer bx-18px"></span>
                                                             </a>
-                                                            <a onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"
-                                                                href="trans-order.php?delete=<?php echo $rowTrans['id'] ?>" class="btn btn-danger btn-sm">
-                                                                <span class="tf-icon bx bx-trash bx-18px"></span></a>
+                                                            
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -145,25 +187,25 @@ if (isset($_GET['delete'])) {
         </div>
         <!-- / Layout wrapper -->
 
-               <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <!-- Core JS -->
+        <!-- build:js assets/vendor/js/core.js -->
+        <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="assets/assets/vendor/libs/popper/popper.js"></script>
+        <script src="assets/assets/vendor/js/bootstrap.js"></script>
+        <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+        <script src="assets/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
 
-    <!-- Vendors JS -->
+        <!-- Vendors JS -->
 
-    <!-- Main JS -->
-    <script src="assets/assets/js/main.js"></script>
+        <!-- Main JS -->
+        <script src="assets/assets/js/main.js"></script>
 
-    <!-- Page JS -->
+        <!-- Page JS -->
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>

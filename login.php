@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
     if ($queryLogin) {
         $rowLogin = mysqli_fetch_assoc($queryLogin);
         if ($password == $rowLogin['password']) {
-            $_SESSION['nama'] = $rowLogin ['nama'];
+            $_SESSION['nama'] = $rowLogin ['name'];
             $_SESSION['id'] = $rowLogin ['id'];
             $_SESSION['id_level'] = $rowLogin ['id_level'];
             
@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
     }elseif($queryEmail) {
         $rowLogin = mysqli_fetch_assoc($queryEmail);
         if ($password == $rowLogin['password']) {
-            $_SESSION['nama'] = $rowLogin ['nama'];
+            $_SESSION['nama'] = $rowLogin ['name'];
             $_SESSION['id'] = $rowLogin ['id'];
             $_SESSION['id_level'] = $rowLogin ['id_level'];
             header("location:index.php");

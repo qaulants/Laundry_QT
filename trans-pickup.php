@@ -94,15 +94,15 @@ if (isset($_GET['delete'])) {
                                                         <td><?php echo $rowTrans['order_date'] ?></td>
                                                         <td>
                                                             <?php
-                                                                switch($rowTrans['order_status']) {
-                                                                    case '1':
-                                                                        $badge = "<span class='badge bg-success'>Sudah dikembalikan</span>";
-                                                                        break;
-                                                                    default:
-                                                                        $badge = "<span class='badge bg-warning'>Baru</span>";
-                                                                        break;
-                                                                } 
-                                                                echo $badge;
+                                                            switch ($rowTrans['order_status']) {
+                                                                case '1':
+                                                                    $badge = "<span class='badge bg-success'>Sudah dikembalikan</span>";
+                                                                    break;
+                                                                default:
+                                                                    $badge = "<span class='badge bg-warning'>Baru</span>";
+                                                                    break;
+                                                            }
+                                                            echo $badge;
                                                             ?>
                                                         </td>
                                                         <td>
@@ -145,25 +145,25 @@ if (isset($_GET['delete'])) {
         </div>
         <!-- / Layout wrapper -->
 
-               <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <!-- Core JS -->
+        <!-- build:js assets/vendor/js/core.js -->
+        <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="assets/assets/vendor/libs/popper/popper.js"></script>
+        <script src="assets/assets/vendor/js/bootstrap.js"></script>
+        <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+        <script src="assets/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
 
-    <!-- Vendors JS -->
+        <!-- Vendors JS -->
 
-    <!-- Main JS -->
-    <script src="assets/assets/js/main.js"></script>
+        <!-- Main JS -->
+        <script src="assets/assets/js/main.js"></script>
 
-    <!-- Page JS -->
+        <!-- Page JS -->
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>

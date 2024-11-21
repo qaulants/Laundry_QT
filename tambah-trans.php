@@ -60,24 +60,6 @@ if (isset($_POST['simpan'])) {
     header("location:trans-order.php?tambah=berhasil");
 }
 
-$id  = isset($_GET['edit']) ?  $_GET['edit'] : '';
-$editUser = mysqli_query($koneksi, "SELECT * FROM user WHERE id = '$id'");
-$rowEdit = mysqli_fetch_assoc($editUser);
-
-if (isset($_POST['edit'])) {
-    $id_level = $_POST['id_level'];
-    $nama = $_POST['name'];
-    $email = $_POST['email'];
-
-    //jika button edit di klik
-    if (isset($_POST['edit'])) {
-        $password  = $_POST['password'];
-    } else {
-        $password  = $rowEdit['password'];
-    }
-    $update = mysqli_query($koneksi, "UPDATE user SET id_level='$id_level', name='$nama', email='$email', password='$password' WHERE id = '$id'");
-    header("location:user.php?ubah=berhasil");
-}
 
 // no invoice code 
 // 001, jika ada auto increment id + 1 = 002, selain itu 001
@@ -141,12 +123,31 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                      <?php if(isset($_GET['detail'])): ?>
                         <div class="container-xxl flex-grow-1 container-p-y">
                             <div class="row">
-                                <div class="col-sm-12 mb-3"></div>
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h5>Transaksi Laundry <?php echo $row[0]['customer_name']?></h5>
+                                                </div>
+                                                <div class="col-sm-6" align="right">
+                                                    <a href="trans-order.php" class="btn btn-secondary">Kembali</a>
+                                                    <a href="print.php?id=<?php echo $row[0]['id_order'] ?>" class="btn btn-success">Print</a>
+                                                    <?php if($row[0]['order_status'] == 0): ?>
+                                                        <a href="tambah-trans-pickup.php?ambil=<?php echo $row[0]['id_order'] ?>" class="btn btn-warning">Ambil Cucian</a>
+                                                    <?php endif ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="card">
                                         <div class="card-header">
                                             <h5>Data Transaksi</h5>
                                         </div>
+                                        <?php include 'helper.php' ?>
                                         <div class="card-body">
                                             <table class="table table-bordered table-striped">
                                                     <tr>
@@ -159,7 +160,7 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                                     </tr>
                                                     <tr>
                                                         <th>Status</th>
-                                                        <td><?php echo $row[0]['order_status'] ?></td>
+                                                        <td><?php echo  changeStatus($row[0]['order_status']) ?></td>
                                                     </tr>
                                                 
                                             </table>
@@ -209,9 +210,9 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                                                     <tr>
                                                         <td><?php echo $no++ ?></td>
                                                         <td><?php echo $value['service_name']?></td>
-                                                        <td><?php echo $value['price'] ?></td>
+                                                        <td><?php echo "Rp". number_format($value['price']) ?></td>
                                                         <td><?php echo $value['qty'] ?></td>
-                                                        <td><?php echo $value['subtotal'] ?></td>
+                                                        <td><?php echo "Rp". number_format($value['subtotal']) ?></td>
                                                     </tr>
                                                     <?php endforeach ?>
                                                 </tbody>
@@ -338,32 +339,7 @@ if (mysqli_num_rows($queryInvoice) > 0) {
                     <!-- / Content -->
 
                     <!-- Footer -->
-                    <footer class="content-footer footer bg-footer-theme">
-                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                            <div class="mb-2 mb-md-0">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                , made with ❤️ by
-                                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                            </div>
-                            <div>
-                                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                                <a
-                                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                                    target="_blank"
-                                    class="footer-link me-4">Documentation</a>
-
-                                <a
-                                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                    target="_blank"
-                                    class="footer-link me-4">Support</a>
-                            </div>
-                        </div>
-                    </footer>
+                    <?php include 'inc/footer.php' ?>
                     <!-- / Footer -->
 
                     <div class="content-backdrop fade"></div>

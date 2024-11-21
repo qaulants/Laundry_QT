@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 $id = $_SESSION['id'];
-$queryLoginUser = mysqli_query($koneksi, "SELECT * FROM user WHERE id =  '$id'");
+$queryLoginUser = mysqli_query($koneksi, "SELECT level.level_name, user.* FROM user LEFT JOIN level ON level.id=user.id_level WHERE user.id = '$id'");
 $rowLoginUser = mysqli_fetch_assoc($queryLoginUser);
 ?>
 
@@ -60,7 +60,7 @@ $rowLoginUser = mysqli_fetch_assoc($queryLoginUser);
                                     <span class="fw-semibold d-block">
                                         <?php echo isset($_SESSION['nama']) ? $_SESSION['nama'] : '' ?>
                                     </span>
-                                    <small class="text-muted">Admin</small>
+                                    <small class="text-muted"><?php echo $rowLoginUser['username'] ?></small>
                                 </div>
                             </div>
                         </a>
