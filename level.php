@@ -72,7 +72,7 @@ if (isset($_GET['delete'])) {
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header">Level</div>
+                  <div class="card-header"><h5>Level</h5></div>
                   <div class="card-body">
                     <?php if (isset($_GET['hapus'])): ?>
                       <div class="alert alert-success" role="alert">

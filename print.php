@@ -103,7 +103,7 @@ while($rowPrint = mysqli_fetch_assoc($queryPrint)) {
 
     <div class="struk">
         <div class="struk-header">
-            <h1>QTMart</h1>
+            <h1>Laundry</h1>
             <p>Jl. Anggrek Jakarta Barat</p>
             <p>081285968650</p>
         </div>

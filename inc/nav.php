@@ -29,33 +29,23 @@ $rowLoginUser = mysqli_fetch_assoc($queryLoginUser);
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <!-- Place this tag where you want the button to render. -->
-            <li class="nav-item lh-1 me-3">
-                <a
-                    class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star"
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
-            </li>
-
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="menu w-1/2">
+                        <!-- <img src="" alt class="w-px-40 h-auto rounded-circle" /> -->
+                        <i class="bx bx-user-circle fs-3"></i>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
-                                <div class="flex-shrink-0 me-3">
+                                <!-- <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
                                         <img src="" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">
                                         <?php echo isset($_SESSION['nama']) ? $_SESSION['nama'] : '' ?>
@@ -65,7 +55,7 @@ $rowLoginUser = mysqli_fetch_assoc($queryLoginUser);
                             </div>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
@@ -89,9 +79,10 @@ $rowLoginUser = mysqli_fetch_assoc($queryLoginUser);
                             </span>
                         </a>
                     </li>
+                    -->
                     <li>
                         <div class="dropdown-divider"></div>
-                    </li>
+                    </li> 
                     <li>
                         <a class="dropdown-item" href="keluar.php">
                             <i class="bx bx-power-off me-2"></i>

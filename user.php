@@ -62,7 +62,7 @@ if (isset($_GET['delete'])) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header">Data User</div>
+                                    <div class="card-header"><h5>Data User</h5></div>
                                     <div class="card-body">
                                         <?php if (isset($_GET['hapus'])): ?>
                                             <div class="alert alert-success" role="alert">
@@ -151,7 +151,7 @@ if (isset($_GET['delete'])) {
         </div>
         <!-- / Layout wrapper -->
 
-               <!-- Core JS -->
+    </div>   <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="assets/assets/vendor/libs/popper/popper.js"></script>

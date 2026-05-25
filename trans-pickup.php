@@ -62,16 +62,16 @@ if (isset($_GET['delete'])) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-                                    <div class="card-header">Transaksi Laundry</div>
+                                    <div class="card-header"><h5>Transaksi Laundry</h5></div>
                                     <div class="card-body">
                                         <?php if (isset($_GET['hapus'])): ?>
                                             <div class="alert alert-success" role="alert">
                                                 Data berhasil dihapus
                                             </div>
                                         <?php endif ?>
-                                        <div align="right" class="mb-3">
+                                        <!-- <div align="right" class="mb-3">
                                             <a href="tambah-trans.php" class="btn btn-primary">Tambah</a>
-                                        </div>
+                                        </div> -->
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -145,25 +145,7 @@ if (isset($_GET['delete'])) {
         </div>
         <!-- / Layout wrapper -->
 
-        <!-- Core JS -->
-        <!-- build:js assets/vendor/js/core.js -->
-        <script src="assets/assets/vendor/libs/jquery/jquery.js"></script>
-        <script src="assets/assets/vendor/libs/popper/popper.js"></script>
-        <script src="assets/assets/vendor/js/bootstrap.js"></script>
-        <script src="assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-        <script src="assets/assets/vendor/js/menu.js"></script>
-        <!-- endbuild -->
-
-        <!-- Vendors JS -->
-
-        <!-- Main JS -->
-        <script src="assets/assets/js/main.js"></script>
-
-        <!-- Page JS -->
-
-        <!-- Place this tag in your head or just before your close body tag. -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <?php include 'inc/js.php' ?>
 </body>
 
 </html>
