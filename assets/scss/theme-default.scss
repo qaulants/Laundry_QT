@@ -2,8 +2,8 @@
 @import './_theme/common';
 @import './_theme/_theme';
 
-$primary-color: #696cff;
-
+// $primary-color: #696cff;
+$primary-color: #205cea;
 @include template-common-theme($primary-color);
 
 // Navbar

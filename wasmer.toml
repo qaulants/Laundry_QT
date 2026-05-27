@@ -1,0 +1,16 @@
+[package]
+name = "qaulants/laundry_qt"
+version = "0.1.0"
+description = "Aplikasi Laundry PHP"
+
+[[modules]]
+name = "php"
+source = "wasmer/php:8.2" # Sesuaikan dengan image PHP yang Anda pakai
+
+[[commands]]
+name = "run"
+module = "php"
+
+[app]
+# Bagian PALING PENTING untuk membuka blokir internet
+net = true

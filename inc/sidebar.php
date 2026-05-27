@@ -4,10 +4,10 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo pt-2">
         <a href="index.php" class="app-brand-link">
-            <!-- <span class="app-brand-logo demo">
-                <img src="./inc/logo_laundry.svg" width="150" alt="logo">
-                 
-            </span> -->
+            <span class="app-brand-logo demo">
+                <!-- <img src="./inc/logo_laundry.svg" width="150" alt="logo"> -->
+                <img width="30" src="./washing-machine.png" alt="logo">
+            </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">Laundry</span>
         </a>
 
