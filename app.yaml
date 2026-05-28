@@ -12,7 +12,7 @@ app_id: da_KAmI3tXUB6N4
 kind: wasmer.io/App.v0
 capabilities:
   network: true
-name: laundry_qt
+name: laundry-qt
 owner: qaulants
 package: sha256:fd0f7548121a9afbbce893578c51e4065bce8469987cf8e6cbae595d3f1b96df
 scaling:
