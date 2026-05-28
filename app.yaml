@@ -1,0 +1,19 @@
+annotations:
+  shipitcli.com/config:
+    commands: {}
+    php_version: 8.3.29
+    phpix: true
+    phpix_worker_threads: 4
+    port: 8080
+    use_composer: false
+  shipitcli.com/provider: php
+  shipitcli.com/version: 0.19.9
+app_id: da_KAmI3tXUB6N4
+kind: wasmer.io/App.v0
+capabilities:
+  network: true
+name: laundry_qt
+owner: qaulants
+package: sha256:fd0f7548121a9afbbce893578c51e4065bce8469987cf8e6cbae595d3f1b96df
+scaling:
+  mode: single_concurrency
